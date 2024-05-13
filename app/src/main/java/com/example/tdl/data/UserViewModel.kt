@@ -26,4 +26,10 @@ class UserViewModel(application: Application) : AndroidViewModel(application) {
     suspend fun getUsers(): List<User> {
         return repository.getUsers()
     }
+
+    fun delteUser(user: User){
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteUser(user)
+        }
+    }
 }

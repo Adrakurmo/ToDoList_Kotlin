@@ -1,11 +1,13 @@
 package com.example.tdl
 
+import android.app.AlertDialog
 import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
@@ -13,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.tdl.data.User
 import com.example.tdl.data.UserViewModel
 import com.example.tdl.databinding.FragmentListBinding
 
@@ -25,16 +28,31 @@ class FragmentList : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_list, container, false)
 
-        val adapter = MyAdapter()
+        val adapter = MyAdapter(this)
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerview)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
-        mUserViewModel.readAllData.observe(viewLifecycleOwner, Observer{user ->
+        mUserViewModel.readAllData.observe(viewLifecycleOwner, Observer { user ->
             adapter.setData(user)
         })
 
+
         return view
+    }
+
+    fun delete(user: User) {
+
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setPositiveButton("YES") { _, _ ->
+            mUserViewModel.delteUser(user)
+        }
+        builder.setNegativeButton("NO") { _, _ ->
+
+        }
+        builder.setMessage("Ya sure you want to delete: ${user.name}")
+        builder.create().show()
+
     }
 }
