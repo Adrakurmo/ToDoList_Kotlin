@@ -18,7 +18,7 @@ class MyAdapter(private val fragment: FragmentList) : RecyclerView.Adapter<MyVie
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentItem = userList[position]
 
-        holder.nameView.text = currentItem.name + "   [" + currentItem.id.toString() + "]"
+        holder.nameView.text = currentItem.name //+ "   [" + currentItem.id.toString() + "]"
         holder.data_type.text = currentItem.date + "   " + currentItem.type
         holder.imageView.setImageResource(R.drawable.x)
 

@@ -54,8 +54,6 @@ class MainActivity : AppCompatActivity() {
                 commit()
             }
 
-            mUserViewModel.addUser(User(0, "name321","data321","type321"))
-            Toast.makeText(this, "Successfully added!", Toast.LENGTH_SHORT).show()
 
         }
 
