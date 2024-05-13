@@ -13,28 +13,43 @@ import java.time.LocalDate
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    private lateinit var viewModel: MainActivityViewModel
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        var viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
+
+        val fragmentList = FragmentList()
+        val fragmentAdd = FragmentAdd()
+
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.flFragment, fragmentList)
+            commit()
+        }
+
+        binding.ButtonList.setOnClickListener {
+            supportFragmentManager.beginTransaction().apply {
+                replace(R.id.flFragment, fragmentList)
+                addToBackStack(null)
+                commit()
+            }
+        }
+
+        binding.ButtonAdd.setOnClickListener {
+            supportFragmentManager.beginTransaction().apply {
+                replace(R.id.flFragment, fragmentAdd)
+                addToBackStack(null)
+                commit()
+            }
+        }
 
 
-        var items: MutableList<Data> = mutableListOf()
-        items.add(Data("imie 1", LocalDate.now().toString(),"sport", R.drawable.x))
-        items.add(Data("imie 2", LocalDate.now().toString(),"sport", R.drawable.x))
-        items.add(Data("imie 3", LocalDate.now().toString(),"sport", R.drawable.x))
-        items.add(Data("imie 4", LocalDate.now().toString(),"sport", R.drawable.x))
 
-
-
-        val recyclerView: RecyclerView = findViewById(R.id.recyclerview)
-        recyclerView.setLayoutManager(LinearLayoutManager(this))
-        recyclerView.setAdapter(MyAdapter(applicationContext, items))
     }
 }

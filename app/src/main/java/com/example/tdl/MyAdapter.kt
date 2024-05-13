@@ -1,7 +1,6 @@
 package com.example.tdl
 import android.annotation.SuppressLint
 import android.content.Context
-import android.media.RouteListingPreference
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -20,7 +19,7 @@ class MyAdapter : RecyclerView.Adapter<MyViewHolder> {
     @SuppressLint("SetTextI18n", "NotifyDataSetChanged")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.nameView.text = items[position].name
-        holder.emailView.text = items[position].date + "   " + items[position].type
+        holder.data_type.text = items[position].date + "   " + items[position].type
         holder.imageView.setImageResource(items[position].image)
 
         holder.imageView.setOnClickListener{
