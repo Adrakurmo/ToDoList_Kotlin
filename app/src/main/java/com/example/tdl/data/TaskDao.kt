@@ -8,16 +8,16 @@ import androidx.lifecycle.LiveData
 import androidx.room.Delete
 
 @Dao
-interface UserDao {
+interface TaskDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun addUser(user: User)
+    suspend fun addUser(task: Task)
 
     @Query("SELECT * FROM user_table ORDER BY id ASC")
-    fun readAllData(): LiveData<List<User>>
+    fun readAllData(): LiveData<List<Task>>
 
     @Query("SELECT * FROM user_table ORDER BY id ASC")
-    suspend fun getUsers(): List<User>
+    suspend fun getUsers(): List<Task>
 
     @Delete
-    suspend fun deleteUser(user: User)
+    suspend fun deleteUser(task: Task)
 }

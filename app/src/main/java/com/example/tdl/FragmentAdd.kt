@@ -12,13 +12,11 @@ import android.widget.EditText
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import com.example.tdl.data.User
-import com.example.tdl.data.UserViewModel
-import com.example.tdl.databinding.ActivityMainBinding
-import com.example.tdl.databinding.FragmentAddBinding
+import com.example.tdl.data.Task
+import com.example.tdl.data.TaskViewModel
 
 class FragmentAdd : Fragment(R.layout.fragment_add) {
-    private lateinit var mUserViewModel: UserViewModel
+    private lateinit var mTaskViewModel: TaskViewModel
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -26,7 +24,7 @@ class FragmentAdd : Fragment(R.layout.fragment_add) {
     ): View? {
 
         val view = inflater.inflate(R.layout.fragment_add, container, false)
-        mUserViewModel = ViewModelProvider(this)[UserViewModel::class.java]
+        mTaskViewModel = ViewModelProvider(this)[TaskViewModel::class.java]
 
 
         val buttonTask = view.findViewById<Button>(R.id.ButtonTask)
@@ -42,8 +40,8 @@ class FragmentAdd : Fragment(R.layout.fragment_add) {
                 var month: String = (datePicker.month + 1).toString()
                 if(datePicker.dayOfMonth < 10) day = "0" + datePicker.dayOfMonth.toString()
                 if(datePicker.month < 10) month = "0" + (datePicker.month + 1)
-                mUserViewModel.addUser(
-                    User(
+                mTaskViewModel.addUser(
+                    Task(
                         0,
                         textEdit.text.toString(),
                         (day + "." + month + "." + datePicker.year),

@@ -1,31 +1,24 @@
 package com.example.tdl
 
-import android.content.Context
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ImageView
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.tdl.data.User
-import com.example.tdl.data.UserViewModel
+import com.example.tdl.data.TaskViewModel
 import com.example.tdl.databinding.ActivityMainBinding
-import java.time.LocalDate
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var viewModel: MainActivityViewModel
-    private lateinit var mUserViewModel : UserViewModel
+    private lateinit var mTaskViewModel : TaskViewModel
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
-        mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
+        mTaskViewModel = ViewModelProvider(this).get(TaskViewModel::class.java)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 

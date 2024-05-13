@@ -10,11 +10,11 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.tdl.data.User
-import com.example.tdl.data.UserViewModel
+import com.example.tdl.data.Task
+import com.example.tdl.data.TaskViewModel
 
 class FragmentList : Fragment() {
-    private lateinit var mUserViewModel: UserViewModel
+    private lateinit var mTaskViewModel: TaskViewModel
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -27,8 +27,8 @@ class FragmentList : Fragment() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        mUserViewModel = ViewModelProvider(this)[UserViewModel::class.java]
-        mUserViewModel.readAllData.observe(viewLifecycleOwner, Observer { user ->
+        mTaskViewModel = ViewModelProvider(this)[TaskViewModel::class.java]
+        mTaskViewModel.readAllData.observe(viewLifecycleOwner, Observer { user ->
             adapter.setData(user)
         })
 
@@ -36,16 +36,16 @@ class FragmentList : Fragment() {
         return view
     }
 
-    fun delete(user: User) {
+    fun delete(task: Task) {
 
         val builder = AlertDialog.Builder(requireContext())
         builder.setPositiveButton("YES") { _, _ ->
-            mUserViewModel.delteUser(user)
+            mTaskViewModel.delteUser(task)
         }
         builder.setNegativeButton("NO") { _, _ ->
 
         }
-        builder.setMessage("Ya sure you want to delete: ${user.name}")
+        builder.setMessage("Ya sure you want to delete: ${task.name}")
         builder.create().show()
 
     }

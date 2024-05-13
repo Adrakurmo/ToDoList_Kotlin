@@ -7,29 +7,29 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class UserViewModel(application: Application) : AndroidViewModel(application) {
-    private val repository: UserRepository
-    val readAllData: LiveData<List<User>>
+class TaskViewModel(application: Application) : AndroidViewModel(application) {
+    private val repository: TaskRepository
+    val readAllData: LiveData<List<Task>>
 
     init {
-        val userDao = UserDatabase.getDatabase(application).userDao()
-        repository = UserRepository(userDao)
+        val userDao = TaskDatabase.getDatabase(application).userDao()
+        repository = TaskRepository(userDao)
         readAllData = repository.readAllData
     }
 
-    fun addUser(user: User) {
+    fun addUser(task: Task) {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.addUser(user)
+            repository.addUser(task)
         }
     }
 
-    suspend fun getUsers(): List<User> {
+    suspend fun getUsers(): List<Task> {
         return repository.getUsers()
     }
 
-    fun delteUser(user: User){
+    fun delteUser(task: Task){
         viewModelScope.launch(Dispatchers.IO) {
-            repository.deleteUser(user)
+            repository.deleteUser(task)
         }
     }
 }
