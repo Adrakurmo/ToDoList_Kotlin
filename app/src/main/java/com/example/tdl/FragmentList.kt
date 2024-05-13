@@ -9,40 +9,25 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.ListAdapter
+import com.example.tdl.data.UserViewModel
 import com.example.tdl.databinding.FragmentListBinding
-import java.time.LocalDate
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [FragmentList.newInstance] factory method to
- * create an instance of this fragment.
- */
 class FragmentList : Fragment() {
     private lateinit var viewModel: MainActivityViewModel
     private var _binding: FragmentListBinding? = null
-    // This property is only valid between onCreateView and onDestroyView.
     private val binding get() = _binding!!
-
+    private lateinit var mUserViewModel: UserViewModel
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
+
+
+        viewModel = ViewModelProvider(this)[MainActivityViewModel::class.java]
         _binding = FragmentListBinding.inflate(inflater, container, false)
         val view = binding.root
-
-        var items: MutableList<Data> = mutableListOf()
-        viewModel.items.add(Data("imie 1", LocalDate.now().toString(),"sport", R.drawable.x))
-        viewModel.items.add(Data("imie 2", LocalDate.now().toString(),"sport", R.drawable.x))
-        viewModel.items.add(Data("imie 3", LocalDate.now().toString(),"sport", R.drawable.x))
-        viewModel.items.add(Data("imie 4", LocalDate.now().toString(),"sport", R.drawable.x))
 
         binding.recyclerview.apply {
             layoutManager = LinearLayoutManager(activity)

@@ -1,15 +1,20 @@
 package com.example.tdl
 
-class Data {
-    var name: String = ""
-    var date: String = ""
-    var type: String = ""
-    var image: Int = 0;
+import android.os.Trace
 
-    constructor(name: String, date: String, type: String, image: Int) {
-        this.name = name
-        this.date = date
-        this.type = type
-        this.image = image
+class Data(
+    var name: String,
+    var date: String,
+    var type: String,
+    var image: Int
+) {
+    val id: Int
+
+    init {
+        id = ++counter
+    }
+
+    companion object {
+        private var counter = 0
     }
 }
