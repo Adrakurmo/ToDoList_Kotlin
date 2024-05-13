@@ -4,36 +4,37 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.tdl.data.User
 
-class MyAdapter : RecyclerView.Adapter<MyViewHolder> {
+class MyAdapter : RecyclerView.Adapter<MyViewHolder>() {
 
-    var context: Context
-    var items: MutableList<Data>
-
-    constructor(context: Context, items: MutableList<Data>) : super() {
-        this.context = context
-        this.items = items
-    }
+    private var userList = emptyList<User>()
 
 
-    @SuppressLint("SetTextI18n", "NotifyDataSetChanged")
+
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.nameView.text = items[position].name
-        holder.data_type.text = items[position].date + "   " + items[position].type
-        holder.imageView.setImageResource(items[position].image)
+        val currentItem = userList[position]
+
+        holder.nameView.text = currentItem.name + "   [" + currentItem.id.toString() + "]"
+        holder.data_type.text = currentItem.date + "   " + currentItem.type
+        holder.imageView.setImageResource(R.drawable.x)
 
         holder.imageView.setOnClickListener{
-            items.remove(items[position])
-            notifyDataSetChanged()
+
         }
+    }
+    fun setData(user: List<User>){
+        this.userList = user
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        return MyViewHolder(LayoutInflater.from(context).inflate(R.layout.item_view,parent,false))
+        return MyViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_view,parent,false))
+    }
+    override fun getItemCount(): Int {
+        return userList.size
     }
 
-    override fun getItemCount(): Int {
-        return items.size
-    }
 
 }
