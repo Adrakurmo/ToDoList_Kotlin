@@ -11,13 +11,11 @@ import androidx.room.Delete
 interface TaskDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun addUser(task: Task)
-
     @Query("SELECT * FROM user_table ORDER BY id ASC")
     fun readAllData(): LiveData<List<Task>>
-
     @Query("SELECT * FROM user_table ORDER BY id ASC")
     suspend fun getUsers(): List<Task>
-
     @Delete
     suspend fun deleteUser(task: Task)
+
 }

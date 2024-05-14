@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
 
         val fragmentList = FragmentList()
         val fragmentAdd = FragmentAdd()
+        val fragmentStats = FragmentStats()
 
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.flFragment, fragmentList)
@@ -45,8 +46,14 @@ class MainActivity : AppCompatActivity() {
                 addToBackStack(null)
                 commit()
             }
+        }
 
-
+        binding.ButtonStats.setOnClickListener {
+            supportFragmentManager.beginTransaction().apply {
+                replace(R.id.flFragment, fragmentStats)
+                addToBackStack(null)
+                commit()
+            }
         }
 
 
