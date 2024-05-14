@@ -23,7 +23,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-
         val fragmentList = FragmentList()
         val fragmentAdd = FragmentAdd()
 
