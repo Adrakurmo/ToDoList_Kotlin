@@ -2,4 +2,22 @@
     <string name="app_name">TDL</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Spinner_Sport">Sport</string>
+    <string name="Text_Add">Add</string>
+    <string name="Text_Stats">Statistics</string>
+    <string name="Text_List">List</string>
+    <string name="Text_Name">Name</string>
+    <string name="Text_Add_New_Task">Add new Task</string>
+    <string name="Text_Save_Preferences">Save pref</string>
+    <string name="Spinner_Task">Task</string>
+    <string name="Spinner_Doctor">Doctor</string>
+    <string name="Spinner_School">School</string>
+    <string name="Spinner_Work">Work</string>
+    <string name="No">No</string>
+    <string name="Yes">Yes</string>
+    <string name="WD">Wrong Data!</string>
+    <string name="Type">type</string>
+    <string name="SA">Successfully added!</string>
+    <string name="YaSure">Ya sure you want to delete:</string>
+    <string name="dv">USD -> PLN</string>
 </resources>

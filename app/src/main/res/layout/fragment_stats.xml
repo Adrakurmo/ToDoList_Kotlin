@@ -9,41 +9,47 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="16dp"
+        tools:ignore="UselessParent">
 
         <TextView
             android:id="@+id/Task"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Task"
+            android:text="@string/Spinner_Task"
             android:textSize="24sp" />
 
         <TextView
             android:id="@+id/Sport"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sport"
+            android:text="@string/Spinner_Sport"
             android:textSize="24sp" />
 
         <TextView
             android:id="@+id/Work"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Work"
+            android:text="@string/Spinner_Work"
             android:textSize="24sp" />
 
         <TextView
             android:id="@+id/School"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="School"
+            android:text="@string/Spinner_School"
             android:textSize="24sp" />
 
         <TextView
             android:id="@+id/Doctor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Doctor"
+            android:text="@string/Spinner_Doctor"
+            android:textSize="24sp" />
+        <TextView
+            android:id="@+id/KursPLN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:textSize="24sp" />
     </LinearLayout>
 

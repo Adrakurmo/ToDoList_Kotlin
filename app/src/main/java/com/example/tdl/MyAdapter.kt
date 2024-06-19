@@ -8,12 +8,11 @@ import com.example.tdl.data.Task
 class MyAdapter(private val fragment: FragmentList) : RecyclerView.Adapter<MyViewHolder>() {
 
     private var taskList = emptyList<Task>()
-
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentItem = taskList[position]
 
-        holder.nameView.text = currentItem.name //+ "   [" + currentItem.id.toString() + "]"
+        holder.nameView.text = currentItem.name
         holder.data_type.text = currentItem.date + "   " + currentItem.type
         holder.imageView.setImageResource(R.drawable.x)
 

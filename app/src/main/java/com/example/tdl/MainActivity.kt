@@ -1,5 +1,7 @@
 package com.example.tdl
 
+import MyViewModel
+import ResourceProvider
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,14 +12,16 @@ import com.example.tdl.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private lateinit var viewModel: MainActivityViewModel
+    private lateinit var viewModel: MyViewModel
     private lateinit var mTaskViewModel : TaskViewModel
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
+        val resourceProvider = ResourceProvider(applicationContext)
+        val factory = MyViewModel.AppViewModelFactory(resourceProvider)
+        viewModel = ViewModelProvider(this, factory).get(MyViewModel::class.java)
         mTaskViewModel = ViewModelProvider(this).get(TaskViewModel::class.java)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -56,7 +60,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-
-
     }
+
 }

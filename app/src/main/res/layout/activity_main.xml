@@ -22,21 +22,21 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Add" />
+                android:text="@string/Text_Add" />
 
             <Button
                 android:id="@+id/ButtonList"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="List" />
+                android:text="@string/Text_List" />
 
             <Button
                 android:id="@+id/ButtonStats"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Statistics" />
+                android:text="@string/Text_Stats" />
 
         </LinearLayout>
 
